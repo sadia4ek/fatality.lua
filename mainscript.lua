@@ -22,7 +22,7 @@ local Window = Rayfield:CreateWindow({
       Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
    },
-   KeySystem = false, -- Set this to true to use our key system
+   KeySystem = true, -- Set this to true to use our key system
    KeySettings = {
       Title = "Fatality subscription check",
       Subtitle = "Subscription check",
@@ -34,6 +34,36 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
-local Tab = Window:CreateTab("Anti-Aim", 4483362458) -- Title, Image
+-- tabs
+local Tab = Window:CreateTab("Player", "rewind") 
+local Tab = Window:CreateTab("Anti-Aim", "rewind") 
+local Tab = Window:CreateTab("Aim", "rewind") 
+local Tab = Window:CreateTab("Misc", "rewind") 
+local Tab = Window:CreateTab("Visuals", "rewind") 
+local Tab = Window:CreateTab("Info", "rewind") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
