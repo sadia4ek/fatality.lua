@@ -1,4 +1,3 @@
-
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 Rayfield:Notify({
 	Title = "Loading",
@@ -65,7 +64,7 @@ local changewalkksped = plrtab:CreateSlider({
     end,
 })
 
-local changewalkksped = plrtab:CreateSlider({
+local changejumpheit = plrtab:CreateSlider({
     Name = "Change Jump Height",
     Range = {1, 125},
     Increment = 1,
