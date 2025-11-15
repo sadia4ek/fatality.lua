@@ -1,6 +1,10 @@
-print("atached")
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
-print("attempt menu load")
+Rayfield:Notify({
+	Title = "Loading",
+	Content = "Loading fatality.lua",
+	Duration = 4
+})
 
 local Window = Rayfield:CreateWindow({
    Name = "fatality.lua",
@@ -14,8 +18,8 @@ local Window = Rayfield:CreateWindow({
    DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
    ConfigurationSaving = {
       Enabled = true,
-      FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "fatality.lua"
+      FolderName = fatality,lua, -- Create a custom folder for your hub/game
+      FileName = "fatalitycfg.lua"
    },
    Discord = {
       Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
@@ -35,12 +39,26 @@ local Window = Rayfield:CreateWindow({
 })
 
 -- tabs
-local Tab = Window:CreateTab("Player", "rewind") 
-local Tab = Window:CreateTab("Anti-Aim", "rewind") 
-local Tab = Window:CreateTab("Aim", "rewind") 
-local Tab = Window:CreateTab("Misc", "rewind") 
-local Tab = Window:CreateTab("Visuals", "rewind") 
-local Tab = Window:CreateTab("Info", "rewind") 
+local plrtab = Window:CreateTab("Player", "rewind") 
+local aatab = Window:CreateTab("Anti-Aim", "rewind") 
+local aimtab = Window:CreateTab("Aim", "rewind") 
+local misctab = Window:CreateTab("Misc", "rewind") 
+local visaulstab = Window:CreateTab("Visuals", "rewind") 
+local infotab = Window:CreateTab("Info", "rewind") 
+
+local Slider = Tab:CreateSlider({
+   Name = "Change Walkspeed",
+   Range = {1, 600},
+   Increment = 10,
+   Suffix = "Bananas",
+   CurrentValue = 16,
+   Flag = "wlksc", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+         local plrg = game.GetService("Players")
+         local plr - game.LocalPlayer
+         plr.Character.Humanoid.WalkSpeed = CurrentValue
+   end,
+})
 
 
 
