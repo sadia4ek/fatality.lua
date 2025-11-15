@@ -47,17 +47,22 @@ local visaulstab = Window:CreateTab("Visuals", "rewind")
 local infotab = Window:CreateTab("Info", "rewind") 
 
 local changewalkksped = plrtab:CreateSlider({
-   Name = "Change Walkspeed",
-   Range = {1, 600},
-   Increment = 10,
-   Suffix = "Bananas",
-   CurrentValue = 16,
-   Flag = "wlksc", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-         local plrg = game.GetService("Players")
-         local plr - game.LocalPlayer
-         plr.Character.Humanoid.WalkSpeed = CurrentValue
-   end,
+    Name = "Change Walkspeed",
+    Range = {1, 600},
+    Increment = 10,
+    Suffix = "Bananas",
+    CurrentValue = 16,
+    Flag = "wlksc",
+    Callback = function(Value)
+        local plrs = game:GetService("Players")
+        local plr = plrs.LocalPlayer
+        local char = plr.Character or plr.CharacterAdded:Wait()
+        local humanoid = char:FindFirstChildOfClass("Humanoid")
+
+        if humanoid then
+            humanoid.WalkSpeed = Value
+        end
+    end,
 })
 
 
