@@ -46,7 +46,7 @@ local misctab = Window:CreateTab("Misc", "rewind")
 local visaulstab = Window:CreateTab("Visuals", "rewind") 
 local infotab = Window:CreateTab("Info", "rewind") 
 
-local Slider = Tab:CreateSlider({
+local changewalkksped = plrtab:CreateSlider({
    Name = "Change Walkspeed",
    Range = {1, 600},
    Increment = 10,
