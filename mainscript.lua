@@ -48,7 +48,7 @@ local infotab = Window:CreateTab("Info", "rewind")
 
 local changewalkksped = plrtab:CreateSlider({
     Name = "Change Walkspeed",
-    Range = {1, 600},
+    Range = {1, 125},
     Increment = 10,
     Suffix = "Bananas",
     CurrentValue = 16,
