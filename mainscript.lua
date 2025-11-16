@@ -1,62 +1,55 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+wait(1)
+
 Rayfield:Notify({
-	Title = "Loading",
-	Content = "Loading fatality.lua",
-	Duration = 4
+    Title = "Loading",
+    Content = "Loading fatality.lua",
+    Duration = 4
 })
 
 local Window = Rayfield:CreateWindow({
    Name = "fatality.lua",
-   Icon = 0,
    LoadingTitle = "Loading fatality",
    LoadingSubtitle = "by sadia4ek",
-   ShowText = "fatality", 
-   Theme = "DarkBlue", 
-   ToggleUIKeybind = "K", 
-   DisableRayfieldPrompts = false,
-   DisableBuildWarnings = false, 
    ConfigurationSaving = {
       Enabled = true,
-      FolderName = "fatality_lua", 
-      FileName = "fatalitycfg.lua"
+      FolderName = "fatality_lua",
+      FileName = "fatalitycfg"
    },
    Discord = {
-      Enabled = false, 
-      Invite = "noinvitelink", 
-      RememberJoins = true 
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
    },
-   KeySystem = true, 
+   KeySystem = true,
    KeySettings = {
       Title = "Fatality subscription check",
       Subtitle = "Subscription check",
-      Note = "For buy subscription: t.me/pyzatui", 
+      Note = "For buy subscription: t.me/pyzatui",
       FileName = "fatalityluasub",
-      SaveKey = true, 
+      SaveKey = true,
       GrabKeyFromSite = false,
       Key = {"FATALITYSUB-14886967"}
    }
 })
 
--- Services
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
--- tabs
-local plrtab = Window:CreateTab("Player", "rewind") 
-local aatab = Window:CreateTab("Anti-Aim", "rewind") 
-local aimtab = Window:CreateTab("Aim", "rewind") 
-local misctab = Window:CreateTab("Misc", "rewind") 
-local visaulstab = Window:CreateTab("Visuals", "rewind") 
-local infotab = Window:CreateTab("Info", "rewind") 
+local plrtab = Window:CreateTab("Player") 
+local aatab = Window:CreateTab("Anti-Aim") 
+local aimtab = Window:CreateTab("Aim") 
+local misctab = Window:CreateTab("Misc") 
+local visaulstab = Window:CreateTab("Visuals") 
+local infotab = Window:CreateTab("Info") 
 
--- Desync Variables
 local desyncT = {enabled = false, loc = CFrame.new()}
 local prevLookVector = nil
 local isSpinning = false
 local spinThreshold = 15
 
--- Desync Settings
 local desyncSettings = {
     customEnabled = false,
     offsetX = 0,
@@ -65,7 +58,6 @@ local desyncSettings = {
     autoPause = true
 }
 
--- playertab
 local changewalkksped = plrtab:CreateSlider({
     Name = "Change Walkspeed",
     Range = {1, 125},
@@ -74,11 +66,9 @@ local changewalkksped = plrtab:CreateSlider({
     CurrentValue = 16,
     Flag = "wlksc",
     Callback = function(Value)
-        local plrs = game:GetService("Players")
-        local plr = plrs.LocalPlayer
+        local plr = game.Players.LocalPlayer
         local char = plr.Character or plr.CharacterAdded:Wait()
         local humanoid = char:FindFirstChildOfClass("Humanoid")
-
         if humanoid then
             humanoid.WalkSpeed = Value
         end
@@ -93,18 +83,16 @@ local changejumpheit = plrtab:CreateSlider({
     CurrentValue = 16,
     Flag = "jh",
     Callback = function(Value)
-        local plrs = game:GetService("Players")
-        local plr = plrs.LocalPlayer
+        local plr = game.Players.LocalPlayer
         local char = plr.Character or plr.CharacterAdded:Wait()
         local humanoid = char:FindFirstChildOfClass("Humanoid")
-
         if humanoid then
             humanoid.JumpPower = Value
         end
     end,
 })
 
-local DesyncSection = misctab:CreateSection("Desync")
+misctab:CreateSection("Desync")
 
 local DesyncToggle = misctab:CreateToggle({
     Name = "Desync Enabled",
@@ -112,13 +100,6 @@ local DesyncToggle = misctab:CreateToggle({
     Flag = "DesyncToggle",
     Callback = function(Value)
         desyncT.enabled = Value
-        if Value then
-            Rayfield:Notify({
-                Title = "Desync Activated",
-                Content = "Client-side desync is now active",
-                Duration = 3,
-            })
-        end
     end,
 })
 
@@ -250,41 +231,3 @@ desynchook = hookmetamethod(game, "__index", newcclosure(function(self, key)
     end
     return desynchook(self, key)
 end))
-
-LocalPlayer.CharacterAdded:Connect(function()
-    task.wait(1)
-    prevLookVector = nil
-    isSpinning = false
-end)
-l
-
-
-
--- zxc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
